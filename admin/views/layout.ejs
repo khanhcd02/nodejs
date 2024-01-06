@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/x-icon" href="/epu.ico">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<style>
+    
+/* Thiết lập trang chung */
+  body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+  }
+
+  /* Thiết lập menu bên trái */
+  .menu {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    height: 100%;
+    overflow: auto;
+    position: fixed; /* Đặt menu cố định */
+    top: 0; /* Menu sẽ nằm ở phía trên cùng của màn hình */
+    bottom: 0;
+  }
+
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .menu ul li {
+    padding: 10px;
+    border-bottom: 1px solid #555;
+    transition: background-color 0.2s;
+  }
+
+  .menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .menu ul li a:hover {
+    background-color: #555;
+    transition: background-color 0.2s;
+  }
+
+  .menu ul li.active {
+    background-color: #555;
+  }
+
+  .content {
+    flex: 1;
+    padding: 20px;
+    height: 100%; 
+    width: 1240px;
+    margin-left: 300px;
+  }
+
+  .contenth1 {
+      text-align: center;
+      color: #333;
+      display: block;
+      height: 50px;
+  }
+  
+  .a{
+    height: 50px;
+  }
+  .avatar {
+  width: 100%; /* Điều chỉnh kích thước của avatar */
+  height: 150px; /* Điều chỉnh chiều cao của avatar (tuỳ chọn) */
+  border-radius: 50%; /* Tạo hình tròn cho avatar */
+  overflow: hidden; /* Ẩn phần ngoài khung hình tròn */
+  border: 2px solid #333; 
+  display: flex; /* Sử dụng flexbox để căn giữa hình ảnh và Fullname */
+  flex-direction: column; /* Hiển thị Fullname dưới hình ảnh */
+  align-items: center;
+  }
+
+  .avatar img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Đảm bảo ảnh bị cắt sao cho vừa với khung */
+  }
+
+  .avatar .fullname {
+    text-align: center; /* Căn giữa nội dung "Fullname" */
+    color: white; 
+    margin-top: 10px; 
+  }
+  .buttonA {
+        background-color: #3498db; 
+        color: #fff; 
+        padding: 10px 20px;
+        border: none; 
+        border-radius: 5px; 
+        font-size: 16px; 
+        cursor: pointer;
+        transition: background-color 0.3s; 
+    }
+
+    .buttonA:hover {
+        background-color: #2980b9; 
+    }
+    .buttonU {
+        background-color: #c0e242; 
+        color: #fff; 
+        padding: 10px 20px;
+        border: none; 
+        border-radius: 5px; 
+        font-size: 16px; 
+        cursor: pointer;
+        transition: background-color 0.3s; 
+        display: inline-block;
+        margin-right: 10px; 
+    }
+    .buttonU:hover {
+        background-color: #89920e; 
+    }
+    .buttonD {
+        background-color: #eb6868; 
+        color: #fff; 
+        padding: 10px 20px;
+        border: none; 
+        border-radius: 5px; 
+        font-size: 16px; 
+        cursor: pointer;
+        transition: background-color 0.3s; 
+        display: inline-block;
+    }
+    .buttonD:hover {
+        background-color: #861d05; 
+    }
+    .buttonX {
+        background-color: #6fe07e; 
+        color: #fff; 
+        padding: 10px 20px;
+        border: none; 
+        border-radius: 5px; 
+        font-size: 16px; 
+        cursor: pointer;
+        transition: background-color 0.3s; 
+        display: inline-block;
+        margin-right: 10px; 
+    }
+    .buttonX:hover {
+        background-color: #097709; 
+    }
+    a{
+        text-decoration: none;
+    }
+    .form{
+        display: inline-block;
+    }
+    .button-container {
+      text-align: right;
+      display: inline-block;
+      float: right;
+    }
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .pagination a {
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
+<div class="container">
+  <div class="menu">
+    <ul>
+      <a href="/admin" class="avatar">
+        <img class="avatar" src="/users/<%= user.Img %>" alt="User Image" width="40">
+        <p class="fullname"><%= user.Fullname %></p>
+      </a>
+      <li><a href="/home"><i class="fas fa-home"></i> Trang client</a></li>
+      <li><a href="/admin/notify"><i class="fab fa-facebook-messenger"></i> Thông báo</a></li>
+      <li><a href="/admin/products"><i class="fas fa-shopping-bag"></i> Sản phẩm</a></li>
+      <li><a href="/admin/category"><i class="fas fa-cube"></i> Loại sản phẩm</a></li>
+      <li><a href="/admin/orders"><i class="fas fa-shopping-cart"></i> Đơn hàng</a></li>
+      <li><a href="/admin/users"><i class="fas fa-user"></i> Người dùng</a></li>
+      <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+    </ul>
+  </div>
+ 
+</div>
+
+</body>
+</html>

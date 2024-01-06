@@ -1,0 +1,65 @@
+<%- include('../layout',{title:'Thêm người dùng'}) %>
+<div class="content">
+    <div class="contentform">
+        <h1>Thêm người dùng</h1>
+        <form method="post" action="/admin/users/add" enctype="multipart/form-data">
+            <input type="text" name="fullname" placeholder="Tên người dùng" required>
+            <input type="file" name="image" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="email" placeholder="Email" required>
+            <input type="text" name="sdt" placeholder="Phone" required>
+            <select name="isAdmin">
+                <option value="0">Khách hàng</option>
+                <option value="1">Admin</option>
+            </select>
+            <button type="submit" name="button" value="update">Thêm người dùng</button>
+        </form>
+    </div>
+    
+</div>
+<style>
+    .contentform {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.contentform h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contentform input[type="text"],
+.contentform input[type="password"],
+.contentform input[type="file"],
+.contentform select {
+    width: 400px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contentform button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contentform button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+</style>

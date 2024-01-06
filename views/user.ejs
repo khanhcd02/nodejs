@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>user</title>
+</head>
+<body>
+  <h1>user</h1>
+  <form method="POST" action="/query">
+    <button type="submit" name="button" value="button1">Query 1</button>
+    <button type="submit" name="button" value="button2">Query 2</button>
+</form>
+<form method="POST" action="/delete">
+  <input type="text" name="tkdel" placeholder="tkdel" id="tkdel" required>
+  <button type="submit" name="button" value="delete">Xoá</button>
+</form>
+<form method="POST" action="/dmk">
+  <input type="text" name="tk" placeholder="tk" id="tk" required>
+  <input type="text" name="mk" placeholder="mk" id="mk" required>
+  <button type="submit" name="button" value="dmk">Đổi mật khẩu</button>
+</form>
+<a href="/personal">Thông tin tài khoản</a>
+</body>
+</html>

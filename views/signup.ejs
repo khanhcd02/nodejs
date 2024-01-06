@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .login {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .login h1 {
+            margin-bottom: 20px;
+        }
+
+        .login label {
+            font-size: 20px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .login input[type="text"],
+        .login input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+		.login input[type="file"] {
+            width: 86%;
+			height: 50px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+			font-size: 15px;
+        }
+
+        .login button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <a style="float: left;text-decoration: none;" href="/home">< Quay lại trang chủ</a>
+        <h1>Sign up</h1>
+        <form action="/signup" method="post" enctype="multipart/form-data">
+            <label for="Fullname">
+                <i class="fas fa-user"></i>
+            </label>
+            <input type="text" name="fullname" placeholder="Fullname" id="fullname" required>
+            <label for="img">
+                <i class="fas fa-image"></i>
+            </label>
+            <input type="file" name="img" required>
+            <label for="username">
+                <i class="fas fa-user-circle"></i>
+            </label>
+            <input type="text" name="username" placeholder="Username" id="username" required>
+            <label for="password">
+                <i class="fas fa-lock"></i>
+            </label>
+            <input type="password" name="password" placeholder="Password" id="password" required>
+            <label for="email">
+                <i class="fas fa-envelope"></i>
+            </label>
+            <input type="text" name="email" placeholder="Email" id="email" required>
+            <label for="sdt">
+                <i class="fas fa-phone"></i>
+            </label>
+            <input type="text" name="sdt" placeholder="Phone Number" id="sdt" required>
+            <button type="submit" name="button" value="signup">Sign up</button>
+        </form>
+        
+    </div>
+</body>
+</html>

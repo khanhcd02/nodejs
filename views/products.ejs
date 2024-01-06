@@ -1,0 +1,20 @@
+<%- include('header',{pageTitle:'Sản phẩm'}) %>
+<h1 style="margin-top: 20px;">Danh sách sản phẩm</h1>
+    <ul>
+        <% products.forEach((product) => { %>
+            <li><%= product.Name %> - <%= product.Price %> VNĐ
+                <img src="/products/<%= product.Img %>" alt="Product Image" width="150">
+                Mô tả: <%= product.ShortDes %>
+                <a href="/products/<%= product.Id %>">...Xem thêm</a>
+                <form action="/cart/products/<%= product.Id %>" method="POST">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1">
+                    <input type="hidden" id="price" name="price" value="<%= product.Price %>">
+                    <input type="hidden" id="img" name="img" value="<%= product.Img %>">
+                    <input type="hidden" id="name" name="name" value="<%= product.Name %>">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+<%- include('footer') %>

@@ -1,0 +1,40 @@
+<%- include('../layout',{title:'Admin'}) %>
+<div class="content">
+    <h1>update loại sản phẩm</h1>
+    <form method="POST" action="/admin/category/update/<%= category[0].Id %>">
+        <input type="text" name="name" placeholder="name" id="name" value="<%= category[0].Name %>" required>
+        <button class="buttonU" type="submit" name="button" value="update">Sửa</button>
+    </form>
+</div>
+<style>
+    .buttonU {
+        background-color: #c0e242; 
+        color: #fff; 
+        padding: 10px 20px;
+        border: none; 
+        border-radius: 5px; 
+        font-size: 16px; 
+        cursor: pointer;
+        transition: background-color 0.3s; 
+        display: inline-block;
+        margin-right: 10px; 
+    }
+    .buttonU:hover {
+        background-color: #89920e; 
+    }
+    /* CSS cho input */
+    input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 20%; /* Kích thước input nằm ngang 100% */
+    margin-bottom: 10px;
+    }
+
+    input[type="text"]:focus {
+    outline: none; /* Loại bỏ đường viền khi input được focus */
+    border-color: #3498db; /* Thay đổi màu viền khi input được focus */
+    }
+
+</style>

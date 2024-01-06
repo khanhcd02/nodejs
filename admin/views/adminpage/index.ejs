@@ -1,0 +1,215 @@
+<%- include('../layout', { title: 'Trang chủ Admin' }) %>
+<div class="content">
+    <div class="admin-summary">
+        <div class="summary-box">
+            <h2>Sản phẩm</h2>
+            <p>Tổng số sản phẩm: <%- totalProducts %></p>
+        </div>
+        <div class="summary-box">
+            <h2>Người dùng</h2>
+            <p>Tổng số người dùng: <%- totalUsers %></p>
+        </div>
+        <div class="summary-box">
+            <h2>Đơn hàng</h2>
+            <p>Tổng số đơn hàng: <%- totalOrders %></p>
+        </div>
+    </div>
+    <h4>Biểu đồ thống kê số lượng sản phẩm đã bán</h4>
+    <canvas id="myChart"></canvas>
+    <h4>Biểu đồ thống kê khách hàng tiềm năng(thanh toán 5 đơn trở lên)</h4>
+    <canvas id="customerChart"></canvas>
+    <form action="/admin/<% selectedRevenue %>" method="GET">
+      <input type="radio" name="revenue" value="day" <% if(selectedRevenue==='day') { %>checked<% } %>> Day
+      <input type="radio" name="revenue" value="month" <% if(selectedRevenue==='month') { %>checked<% } %>> Month
+      <input type="radio" name="revenue" value="year" <% if(selectedRevenue==='year') { %>checked<% } %>> Year
+      <button type="submit">Submit</button>
+    </form>
+    <% if(selectedRevenue==='year') { %>
+      <h1>Thống kê doanh thu theo năm</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Năm</th>
+            <th>Doanh thu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% revenue.forEach(entry => { %>
+            <tr>
+              <td><%= entry.OrderYear %></td>
+              <td><%= entry.TotalRevenue %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else if(selectedRevenue==='month') { %>
+      <h1>Thống kê doanh thu theo tháng</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Tháng</th>
+            <th>Doanh thu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% revenue.forEach(entry => { %>
+            <tr>
+              <td><%= entry.OrderMonth %>/<%= entry.OrderYear %></td>
+              <td><%= entry.TotalRevenue %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else{ %>
+      <h1>Thống kê doanh thu theo ngày</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Ngày</th>
+            <th>Doanh thu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% revenue.forEach(entry => { %>
+            <tr>
+              <td><%= new Date(entry.OrderDay).toLocaleDateString() %></td>
+              <td><%= entry.TotalRevenue %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } %>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Dữ liệu biểu đồ sản phẩm đã bán
+      const data = JSON.parse('<%- JSON.stringify(data) %>');
+      const ctx = document.getElementById('myChart').getContext('2d');
+    
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: data.labels,
+          datasets: [{
+            label: 'Sản phẩm bán được',
+            data: data.datasets[0].data,
+            backgroundColor: data.datasets[0].backgroundColor,
+            borderColor: data.datasets[0].borderColor,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          legend: {
+            position: 'right' 
+          }
+        }
+      });
+      // Dữ liệu biểu đồ đơn hàng của khách hàng
+  const customerData = JSON.parse('<%- JSON.stringify(customerData) %>');
+  const customerCtx = document.getElementById('customerChart').getContext('2d');
+
+  new Chart(customerCtx, {
+    type: 'bar',
+    data: {
+      labels: customerData.labels,
+      datasets: [{
+        label: 'Số lượng đơn hàng',
+        data: customerData.datasets[0].data,
+        backgroundColor: customerData.datasets[0].backgroundColor,
+        borderColor: customerData.datasets[0].borderColor,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      legend: {
+        display: false
+      }
+    }
+  });
+    </script>
+</div>
+
+<style>
+    .content {
+        padding: 20px;
+    }
+
+    .admin-summary {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .summary-box {
+        background-color: #3498db;
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 30%;
+    }
+
+    .summary-box h2 {
+        font-size: 24px;
+    }
+
+    .summary-box p {
+        font-size: 18px;
+    }
+
+    .recent-activity {
+        margin-top: 20px;
+    }
+
+    .recent-activity h2 {
+        font-size: 24px;
+    }
+
+    .recent-activity ul {
+        list-style: disc;
+        padding-left: 20px;
+    }
+
+    .recent-activity li {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #3498db;
+  color: #fff;
+}
+
+th {
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+</style>

@@ -1,0 +1,109 @@
+<%- include('../layout',{title:'Admin'}) %>
+<div class="content">
+    <div class="contentD">
+        <h1>Chi tiết đơn hàng</h1>
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% order.forEach((o) => { %>
+                    <tr>
+                        <td><%= o.ProductName %></td>
+                        <td><%= o.Quantity %></td>
+                        <td><%= o.Price %> VNĐ</td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        
+        <form method="post" action="/admin/orders/<%= order[0].OrderId %>">
+            <textarea name="address" placeholder="Địa chỉ giao hàng"><%= order[0].Address %></textarea>
+            <select name="status">
+                <option value="0" <%= 0 === order[0].Status ? 'selected' : '' %>>Bị bom hàng</option>
+                <option value="1" <%= 1 === order[0].Status ? 'selected' : '' %>>Đã đặt hàng</option>
+                <option value="2" <%= 2 === order[0].Status ? 'selected' : '' %>>Đã giao hàng</option>
+            </select>
+            <button type="submit" name="button" value="status">Xác nhận</button>
+        </form>
+    </div>
+</div>
+<style>
+    .contentD {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.content h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.content input[type="text"],
+.content select,
+.content textarea {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.content button[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto;
+}
+
+.content button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.content li {
+    list-style: none;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-table th, .order-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.order-table thead {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.order-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.order-table tbody tr:nth-child(even) {
+    background-color: #e3e3e3;
+}
+
+</style>

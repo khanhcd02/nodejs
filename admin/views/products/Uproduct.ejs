@@ -1,0 +1,75 @@
+<%- include('../layout',{title:'Admin'}) %>
+<div class="content">
+    <div class="contentU">
+        <h1>Update sản phẩm</h1>
+        <form method="post" action="/admin/products/update/<%= product[0].Id %>" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Tên sản phẩm" required value="<%= product[0].Name %>">
+            <img src="/products/<%=product[0].Img %>" alt="Product Image" width="150">
+            <input type="hidden" name="curImg" value="<%= product[0].Img %>">
+            <input type="file" name="image">
+            <select name="categoryId">
+                <% for (const category of categories) { %>
+                    <option value="<%= category.Id %>" <%= category.Id === product[0].CategoryId ? 'selected' : '' %>><%= category.Name %></option>
+                <% } %>
+            </select>
+            <input type="text" name="shortDes" placeholder="Mô tả ngắn gọn" value="<%= product[0].ShortDes %>">
+            <input type="number" name="price" placeholder="Giá" required value="<%= product[0].Price %>">
+            <textarea name="fullDes" placeholder="Mô tả đầy đủ"><%= product[0].FullDes %></textarea>
+            <button type="submit" name="button" value="update">update sản phẩm</button>
+        </form>
+    </div>    
+</div>
+<style>
+    .contentU {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.content h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.content img {
+    display: block;
+    margin: 0 auto;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.content input[type="text"],
+.content input[type="number"],
+.content select,
+.content textarea {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.content button[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto;
+}
+
+.content button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+</style>

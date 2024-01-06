@@ -1,0 +1,86 @@
+<%- include('header',{pageTitle:'Chi tiết sản phẩm'}) %>
+    <div class="container">
+        <div class="product-details">
+            <h1>Chi tiết sản phẩm</h1>
+            <h2><%= products[0].Name %></h2>
+            <img src="/products/<%= products[0].Img %>" alt="Product Image">
+            <form action="/cart/products/<%= products[0].Id %>" method="POST">
+                <label for="quantity">Số lượng:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1">
+                <input type="hidden" id="price" name="price" value="<%= products[0].Price %>">
+                <input type="hidden" id="img" name="img" value="<%= products[0].Img %>">
+                <input type="hidden" id="name" name="name" value="<%= products[0].Name %>">
+                <button class="menu_btn" type="submit">Add to Cart</button>
+            </form>
+            <p><strong>Mô tả:</strong> <%= products[0].FullDes %>
+                <span><strong>Giá:</strong> <%= products[0].Price %> VNĐ</span>
+            </p>
+        </div>
+    </div>
+<%- include('footer') %>
+    
+<style>
+    .container {
+    margin-top: 100px;
+      margin-left: 300px;
+      text-align: center;
+      padding: 20px;
+      position: absolute;
+      width: 1000px;
+    }
+
+    .product-details {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      margin-top: 50px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column; /* Xếp nội dung từ trên xuống dưới */
+      align-items: center; /* Căn giữa theo chiều ngang */
+      height: 600px;
+    }
+
+    .product-details h1 {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    .product-details img {
+      width: 450px;
+      height: 300px;
+      margin-top: 20px;
+      display: block;
+    }
+
+    .product-details h2 {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    .product-details p {
+      font-size: 16px;
+      margin-right: 200px;
+      margin-top: 130px;
+      margin-bottom: 20px;
+    }
+    .product-details span {
+      font-size: 16px;
+      display: block;
+    }
+    .product-details form {
+      height: 50px;
+      margin-top: 10px;
+      width: 400px;
+    }
+    .product-details label {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .product-details input[type="number"] {
+        font-size: 16px;
+        margin-bottom: 10px;
+        height: 30px;
+    }
+</style>

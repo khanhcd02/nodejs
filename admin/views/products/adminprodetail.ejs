@@ -1,0 +1,44 @@
+<%- include('../layout',{title:'Chi tiết sẩn phẩm'}) %>
+<div class="content">
+    <div class="contentD">
+        <h1>Chi tiết sản phẩm</h1>
+        <h2><%= products[0].Name %></h2>
+        <img src="/products/<%=products[0].Img %>" alt="Product Image" width="350">
+        <p>Giá: <%= products[0].Price %> VNĐ</p>
+        <p>Mô tả: <%= products[0].FullDes %></p>
+    </div>
+</div>
+<style>
+    .contentD {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.contentD h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contentD h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contentD img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.contentD p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #333;
+}
+
+</style>

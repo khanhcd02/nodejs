@@ -1,0 +1,131 @@
+<%- include('../layout',{title:'Đơn hàng'}) %>
+<div class="content">
+    <h1>Danh sách đơn hàng</h1>
+    <div class="search-container">
+        <form action="/admin/orders/search" method="POST">
+            <input type="text" name="searchTerm" id="searchTerm" placeholder="Nhập từ khoá..." required>
+            <button type="submit">Tìm</button>
+        </form>
+      </div>
+    <table class="contenttable">
+        <thead>
+            <tr>
+                <th>Mã đơn hàng</th>
+                <th>Khách hàng</th>
+                <th>Ngày đặt hàng</th>
+                <th>Địa chỉ</th>
+                <th>Tổng giá trị</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% order.forEach((o) => { %>
+                <tr>
+                    <td><%= o.Id %></td>
+                    <td><%= o.Fullname %></td>
+                    <td><%= new Date(o.OrderDate).toLocaleString() %></td>
+                    <td><%= o.Address %></td>
+                    <td><%= o.Total %> VNĐ</td>
+                    <td>
+                        <% if (o.Status === 0) { %>
+                          bị bom
+                        <% } else if (o.Status === 1) { %>
+                          đã đặt
+                        <% } else if (o.Status === 2) { %>
+                          đã giao
+                        <% } else { %>
+                          Trạng thái không rõ
+                        <% } %>
+                    </td>
+                    <td><a href="/admin/orders/<%= o.Id %>">Chi tiết</a></td>
+                </tr>
+            <% }); %>
+            <!-- Add pagination controls to your category.ejs -->
+            <% if(searchTerm=="") { %>
+                <div class="pagination">
+                  <% for (let i = 1; i <= totalPages; i++) { %>
+                  <a href="/admin/orders?page=<%= i %>" <%= i === currentPage ? 'class="active"' : '' %>><%= i %></a>
+                  <% } %>
+                </div>
+              <% }else { %>
+                <div class="pagination">
+                  <% for (let i = 1; i <= totalPages; i++) { %>
+                  <a href="/admin/orders/search?page=<%= i %>" <%= i === currentPage ? 'class="active"' : '' %>><%= i %></a>
+                  <% } %>
+                </div>
+              <% } %>
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .contenttable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.contenttable th, .contenttable td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.contenttable th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.contenttable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.contenttable tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.contenttable a {
+    background-color: #3498db;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contenttable a:hover {
+    background-color: #2980b9;
+}
+.search-container {
+    display: inline;
+    text-align: right;
+    margin: 50px auto;
+    }
+
+    .search-container input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+    }
+
+    .search-container button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .search-container button:hover {
+        background-color: #0056b3;
+    }
+    
+</style>

@@ -1,0 +1,77 @@
+<%- include('../layout',{title:'Chi tiết người dùng'}) %>
+<div class="content">
+    <div class="contentform">
+        <h1>Chi tiết</h1>
+        <form method="post" action="/admin/users/<%= u[0].Id %>" enctype="multipart/form-data">
+            <input type="text" name="fullname" placeholder="Tên người dùng" required value="<%= u[0].Fullname %> ">
+            <img src="/users/<%= u[0].Img %>" alt="User Image" width="150">
+            <input type="hidden" name="curImg" value="<%= u[0].Img %>">
+            <input type="file" name="image">
+            <input type="text" name="username" placeholder="Username" value="<%= u[0].Username %>">
+            <input type="password" name="password" placeholder="Password" required value="<%= u[0].Password %>">
+            <input type="text" name="email" placeholder="Email" value="<%= u[0].Email %>">
+            <input type="text" name="sdt" placeholder="Phone" value="<%= u[0].SDT %>">
+            <select name="isAdmin">
+                <option value="0" <%= 0 === u[0].isAdmin ? 'selected' : '' %>>Khách hàng</option>
+                <option value="1" <%= 1 === u[0].isAdmin ? 'selected' : '' %>>Admin</option>
+                <option value="2" <%= 2 === u[0].isAdmin ? 'selected' : '' %>>Khoá tài khoản</option>
+            </select>
+            <button type="submit" name="button" value="update">Cập nhật thông tin người dùng</button>
+        </form>
+    </div>
+    
+</div>
+<style>
+    .contentform {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.contentform h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contentform input[type="text"],
+.contentform input[type="password"],
+.contentform input[type="file"],
+.contentform select {
+    width: 800px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contentform button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contentform button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.contentform img {
+    display: block;
+    margin-top: 10px;
+    max-width: 150px;
+    max-height: 150px;
+    margin: 0 auto;
+}
+
+</style>

@@ -1,0 +1,857 @@
+/* CSS RESET */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1;
+    background: #f5f5f5;
+    color: #434343;
+  }
+  
+  ol, ul {
+    list-style: none;
+  }
+  
+  blockquote, q {
+    quotes: none;
+  }
+  
+  blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+  }
+  
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  /* Changable Global Styles -------------------------------------------------- */
+  *::-moz-selection {
+    color: #ff9e98;
+  }
+  
+  h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+  }
+  
+  h1 {
+    font-size: 42px;
+  }
+  
+  h2 {
+    font-size: 36px;
+  }
+  
+  h3 {
+    font-size: 30px;
+  }
+  
+  h4 {
+    font-size: 24px;
+  }
+  
+  h5 {
+    font-size: 18px;
+  }
+  
+  h6 {
+    font-size: 14px;
+  }
+  
+  p {
+    font-size: 12px;
+    font-weight: 300;
+    margin: 0 0 10px 0;
+    line-height: 18px;
+  }
+  
+  .light {
+    font-weight: 300;
+  }
+  
+  .regular, strong {
+    font-weight: 400;
+  }
+  
+  .medium {
+    font-weight: 500;
+  }
+  
+  .bold {
+    font-weight: 700;
+  }
+  
+  a {
+    transition: all 0.2s ease-in-out 0s;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+  }
+  
+  a:focus {
+    outline: medium none;
+    outline-offset: 0;
+  }
+  
+  a:hover, a:focus, a {
+    text-decoration: none;
+  }
+  
+  ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul:after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+  
+  li {
+    line-height: 18px;
+    transition: all 0.2s ease-in-out 0s;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /*~~ text align style ~~*/
+  .center-text {
+    text-align: center;
+  }
+  
+  .left-text {
+    text-align: left;
+  }
+  
+  .right-text {
+    text-align: right;
+  }
+  
+  /*~~ position ~~*/
+  .relative {
+    position: relative;
+  }
+  
+  .absolute {
+    position: absolute;
+  }
+  
+  /*Color*/
+  .light-red {
+    color: #fe5252;
+  }
+  
+  gray {
+    color: #CCC;
+  }
+  
+  red {
+    color: #ff3a3a;
+  }
+  
+  red-bg {
+    background: #ff3a3a;
+  }
+  
+  yellow-bg {
+    background: #fcff19;
+  }
+  
+  black-bg {
+    background: #353535;
+  }
+  
+  gray-bg {
+    background: #CCC;
+  }
+  
+  dark-bg {
+    background: #333;
+  }
+  
+  /*------------------------------- [ Structure ] -----------------------------*/
+  #wrapper {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    text-align: left;
+  }
+  
+  /*------------------------------- [ column 1 ] ------------------------------*/
+  #content {
+    padding: 40px 0;
+  }
+  
+  /*------------------------------- [ column 2 ] ------------------------------*/
+  #column-right {
+    margin-top: 0;
+  }
+  
+  .sidebar {
+    padding: 20px 20px 0;
+  }
+  
+  #sidebar {
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 220px;
+  }
+  
+  #sidebar ul {
+    padding: 0 0 20px 0;
+  }
+  
+  #sidebar ul li {
+    padding: 0 0 0 15px;
+    background: none;
+    color: #666;
+  }
+  
+  #sidebar ul li ul li {
+    padding: 0 0 0 30px;
+    background: none;
+    color: #555;
+  }
+  
+  #sidebar ul li ul li ul li {
+    padding: 0 0 0 45px;
+    background: none;
+    color: #444;
+  }
+  
+  #sidebar ul li ul li ul li ul li {
+    padding: 0 0 0 60px;
+    background: none;
+    color: #333;
+  }
+  
+  #sidebar ul li ul li ul li ul li ul li {
+    padding: 0 0 0 75px;
+    background: none;
+    color: #222;
+  }
+  
+  #sidebar ul li ul li ul li ul li ul li ul li {
+    padding: 0 0 0 90px;
+    background: none;
+    color: #111;
+  }
+  
+  #sidebar ul li ul li ul li ul li ul li ul li ul li {
+    padding: 0 0 0 105px;
+    background: none;
+    color: #000;
+  }
+  
+  /*-------------------------------- [Widgets] --------------------------------*/
+  .widget {
+    margin: 0 0 30px;
+  }
+  
+  .widget_last {
+    margin: 0;
+  }
+  
+  .testimonial {
+    margin: 0 0 15px;
+  }
+  
+  div.box {
+    text-align: left;
+    position: relative;
+    margin: 0 0 15px;
+    padding: 15px;
+  }
+  
+  div.col_full {
+    clear: both;
+    margin: 0 0 20px;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  /*----------------------------- [ Index Pages ] ------------------------------*/
+  #content {
+    text-align: left;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+  
+  #content a img {
+    border: none;
+  }
+  
+  #content .category_list {
+    font-size: 13px;
+    color: #666;
+  }
+  
+  /*---------------------------- [ Sidebar Widgets ] --------------------------*/
+  #right_content {
+    float: left;
+    width: 750px;
+    overflow: hidden;
+    background: #fff;
+  }
+  
+  /*----- [ Recent Post Widget ] -----*/
+  #recent-posts ul li {
+    overflow: hidden;
+  }
+  
+  #recent-posts ul li .frame_left {
+    float: left;
+    width: 160px;
+    margin: 0 15px 0 0;
+  }
+  
+  #recent-posts ul li .frame_right {
+    text-align: left;
+    padding: 10px 0 0;
+    margin: 0;
+    width: 555px;
+  }
+  
+  /*----- [ Mini Gallery ] -----*/
+  .mini-gallery {
+    text-align: left;
+    overflow: hidden;
+    width: 750px;
+  }
+  
+  .gallery-margin {
+    margin: 0 0 20px 0;
+  }
+  
+  .gallery-text {
+    text-align: left;
+    width: 750px;
+    overflow: hidden;
+    margin: 0 0 0 0;
+    padding: 20px 0 20px 0;
+  }
+  
+  .gallery-text-ct {
+    margin: 0;
+    padding: 20px 0 20px 0;
+  }
+  
+  /*----- [ Popular Posts Widget ] -----*/
+  #popular-posts ul li {
+    padding: 0 0 10px 0;
+  }
+  
+  #popular-posts ul li .frame {
+    float: left;
+    text-align: left;
+    margin: 0;
+    padding: 10px 0 0 0;
+    width: 90px;
+  }
+  
+  #popular-posts ul li .frame_right {
+    float: left;
+    text-align: left;
+    padding: 10px 0 0;
+    margin: 0;
+    width: 660px;
+  }
+  
+  /*----- [ Social Network Widget ] -----*/
+  .social-icons ul {
+    padding: 20px 0 20px 0;
+  }
+  
+  .social-icons ul li {
+    float: left;
+    margin: 0 10px 0 0;
+  }
+  
+  .social-icons .facebook {
+    float: left;
+    text-align: left;
+    width: 140px;
+  }
+  
+  .social-icons .twitter {
+    float: left;
+    text-align: left;
+    width: 190px;
+  }
+  
+  .social-icons .gplus {
+    float: left;
+    text-align: left;
+    width: 170px;
+  }
+  
+  .social-icons .youtube {
+    float: left;
+    text-align: left;
+    width: 170px;
+  }
+  
+  .social-icons .flickr {
+    float: left;
+    text-align: left;
+    width: 180px;
+  }
+  
+  /*----------------------------- [ Contact Pages ] ---------------------------*/
+  #contact {
+    text-align: left;
+    width: 100%;
+    background: #fff;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+  
+  /*----------------------------- [ Page Of Tag ] ------------------------------*/
+  /*............................. [ Articles ] ..............................*/
+  #articles {
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+  }
+  
+  .articles {
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+  }
+  
+  .content_bg {
+    float: left;
+    text-align: left;
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 30px 0 0;
+  }
+  
+  #content_top {
+    width: 100%;
+    background: #fff;
+    text-align: left;
+    margin: 0 0 0 0;
+    padding: 0;
+  }
+  
+  #content_middle {
+    width: 100%;
+    background: #fff;
+    text-align: left;
+    margin: 0 0 0 0;
+    padding: 30px 0 0;
+  }
+  
+  #content_bottom {
+    width: 100%;
+    background: #fff;
+    text-align: left;
+    margin: 0 0 0 0;
+    padding: 0;
+  }
+  
+  .more-articles {
+    width: 750px;
+    text-align: left;
+    margin: 0;
+    padding: 20px 0 0;
+    background: #fff;
+  }
+  
+  .left_bar {
+    float: left;
+    text-align: left;
+    padding: 30px 0 0 0;
+    width: 220px;
+  }
+  
+  .sidebar-content {
+    float: left;
+    text-align: left;
+    width: 530px;
+    overflow: hidden;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-content h2 {
+    font-size: 18px;
+    padding: 0 0 15px 0;
+  }
+  
+  .sidebar-content p {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 0 30px 0;
+  }
+  
+  .sidebar-content img {
+    border: none;
+  }
+  
+  /*............................. [ Articles ] ..............................*/
+  .articles ul {
+    padding: 0 0 20px 0;
+  }
+  
+  .articles ul li {
+    list-style: none outside none;
+    padding: 0 0 0 30px;
+    margin: 0;
+  }
+  
+  .articles ul li h2 {
+    font-size: 24px;
+    margin: 0 0 15px 0;
+    padding: 0;
+  }
+  
+  .articles ul li p {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 0 30px 0;
+    margin: 0;
+  }
+  
+  .articles ul li img {
+    border: none;
+  }
+  
+  .articles ul li p.date {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .articles ul li p.comments {
+    font-size: 12px;
+    margin: 0 0 0 15px;
+    padding: 0;
+    background: url(../images/comment.gif) no-repeat 0 2px;
+  }
+  
+  /*............................................................................*/
+  /*................................ [ Typography ] ................................*/
+  /*............................................................................*/
+.view-mode a.active:before {
+  border-color: rgba(247, 84, 74, 0);
+  border-top-color: #f7544a;
+  border-width: 8px;
+  margin-left: -8px;
+}
+.bottom .view-mode a.active:after,
+.bottom .view-mode a.active:before {
+  top: auto;
+  bottom: 100%;
+}
+.bottom .view-mode a.active:after {
+  border-top-color: #fff;
+  border-bottom-color: #f7544a;
+}
+.bottom .view-mode a.active:before {
+  border-top-color: #fff;
+  border-bottom-color: #f7544a;
+}
+.sort-by, .limiter {
+  float: left;
+  margin-left: 20px;
+  font-size: 13px;
+}
+.sort-by select, .limiter select, select {
+  padding: 6px;
+  border: 1px solid #e7e7e7;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  margin-left: 10px;
+  color: #f7544a;
+  min-width: 60px;
+}
+.sort-by option, .limiter option, option {
+  color: #666666;
+}
+.pager {
+  float: right;
+  width: auto;
+  margin: 0;
+}
+.pager a {
+  float: left;
+  margin-left: 5px;
+  min-width: 25px;
+  min-height: 25px;
+  border: 1px solid #fff;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  text-align: center;
+  font-size: 15px;
+  line-height: 22px;
+}
+.pager a.prev-page,
+.pager a.next-page {
+  border: 1px solid #cfcfcf;
+}
+.pager a.active {
+  color: #f7544a;
+}
+/*Products Details page style */
+.products-details {
+  position: relative;
+  width: 100%;
+}
+.preview_image {
+  float: left;
+  width: 330px;
+  position: relative;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border: 1px solid #e1e1e1;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  display: block;
+}
+.preview-small {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  position: relative;
+}
+.preview-small .zoom {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  z-index: 1;
+  font-size: 24px;
+  color: #b0b0b0;
+}
+.thum-image {
+  position: relative;
+  width: 240px;
+  margin: 15px auto 5px;
+}
+.thum-image li {
+  float: left;
+  width: 57px;
+  height: 57px;
+  padding: 5px;
+  display: inline-block;
+}
+.thum-image li a {
+  float: left;
+  width: 47px;
+  height: 47px;
+  padding: 3px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.thum-image li a:hover {
+  border-color: #f7544a;
+}
+.thum-image li a img {
+  max-height: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+.thum-image .control-left,
+.thum-image .control-right {
+  position: absolute;
+  top: 20px;
+  left: -20px;
+  font-size: 20px;
+  color: #b0b0b0;
+}
+.thum-image .control-right {
+  left: auto;
+  right: -20px;
+}
+.thum-image .control-left:hover,
+.thum-image .control-right:hover,
+.preview-small .zoom:hover {
+  color: #f7544a;
+}
+.products-description {
+  border: 1px solid #E1E1E1;
+  border-radius: 10px;
+  display: block;
+  margin: 15px 0 15px 360px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.products-description .name {
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.border {
+  border-color: #e1e1e1;
+}
+.products-description .price {
+  font-weight: 400;
+  width: 100%;
+  font-size: 13px;
+  vertical-align: middle;
+}
+.products-description .price .new_price {
+  font-size: 30px;
+  color: #ff3636;
+  font-weight: 500;
+  margin-left: 30px;
+}
+.products-description .new_price sup {
+  font-size: 18px;
+}
+.products-description .old_price {
+  color: #666666;
+  font-size: 18px;
+  text-decoration: line-through;
+  margin-left: 30px;
+}
+.products-description .old_price sup {
+  font-size: 13px;
+}
+.wided {
+  float: left;
+  position: relative;
+  width: 100%;
+}
+.products-description .qty {
+  float: left;
+  font-weight: 400;
+  width: auto;
+  font-size: 13px;
+  vertical-align: middle;
+}
+.products-description .qty select {
+  margin-left: 30px;
+}
+.products-description .button_group {
+  float: right;
+}
+/** tab style **/
+.tab-box {
+  position: relative;
+  min-height: 250px;
+  width: 100%;
+  float: left;
+  margin-top: 15px;
+}
+#tabnav {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+#tabnav ul {
+  position: relative;
+}
+#tabnav ul li {
+  float: left;
+  display: inline-block;
+  margin-right: 10px;
+}
+#tabnav ul li:last-child {
+  margin-right: 0;
+}
+#tabnav ul li a {
+  display: block;
+  padding: 15px 20px;
+  font-size: 18px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  position: relative;
+}
+#tabnav ul li a:hover,
+#tabnav ul li.active a {
+  position: relative;
+  background: #f7544a;
+  color: #fff;
+  border: 1px solid #f7544a;
+}
+#tabnav ul li a:hover:after,
+#tabnav ul li.active a:after {
+  top: 100%;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-top-color: #f7544a;
+  border-width: 10px;
+  margin-left: -10px;
+}
+.tab-content {
+  background: #fff;
+  display: block;
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.tab-content ul {
+  list-style: square;
+  margin: 0;
+  padding: 0;
+}
+.tab-content ul li {
+  margin: 0 0 0 30px;
+  padding: 0;
+}
+.tab-content ul li:last-child {
+  margin: 0;
+}
+.tab-content h2,
+.tab-content h3 {
+  margin: 0 0 15px;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.option_nav .dorpdown {
+  display: inline-block; /* Hiển thị các mục dorpdown cùng hàng ngang */
+  margin-right: 20px; /* Tạo khoảng cách giữa chúng (tuỳ chỉnh) */
+  position: relative;
+}

@@ -1,0 +1,57 @@
+/* custom.css */
+.menu {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding-top: 20px;
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .menu ul li {
+    padding: 10px;
+    border-bottom: 1px solid #555;
+    transition: background-color 0.2s;
+  }
+  
+  .menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    display: block;
+  }
+  
+  .menu ul li a:hover {
+    background-color: #555;
+    transition: background-color 0.2s;
+  }
+  
+  .menu ul li.active {
+    background-color: #555;
+  }
+  
+  /* Thêm biểu tượng cho các mục menu (font-awesome) */
+  .menu ul li a::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f054"; /* Thay thế bằng mã biểu tượng font-awesome mong muốn */
+    margin-right: 10px;
+  }
+  
+  .content {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  
+  /* Tùy chỉnh font-awesome biểu tượng */
+  @font-face {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    src: url('/path/to/your/fontawesome-webfont.woff') format('woff');
+  }
+  

@@ -1,0 +1,137 @@
+<%- include('header', { pageTitle: 'Tìm kiếm sản phẩm' }) %>
+<div class="searchform">
+  <h1>Tìm kiếm sản phẩm</h1>
+  <form action="/search" method="POST">
+    <input type="text" name="searchTerm" placeholder="Nhập từ khóa tìm kiếm" required>
+    <button type="submit">Tìm kiếm</button>
+  </form>
+</div>
+<h2 style="margin-left: 300px;" >Kết quả tìm kiếm:</h2>
+<div class="container">
+  <div class="search-results">
+    <% if (searchResults.length > 0) { %>
+        <div class="menu_box">
+          <% searchResults.forEach((product) => { %>
+            <div class="menu_card">
+              <div class="menu_image">
+                  <a href="/products/<%= product.Id %>"><img src="/products/<%= product.Img %>"></a>
+              </div>
+              <div class="menu_info">
+                <a href="/products/<%= product.Id %>"><h2 style="width: 200px;"><%= product.Name %></h2></a>
+                <h3>$<%= product.Price %></h3>
+                <form action="/cart/products/<%= product.Id %>" method="POST">
+                  <label for="quantity">Quantity:</label>
+                  <input type="number" id="quantity" name="quantity" value="1" min="1">
+                  <input type="hidden" id="price" name="price" value="<%= product.Price %>">
+                  <input type="hidden" id="img" name="img" value="<%= product.Img %>">
+                  <input type="hidden" id="name" name="name" value="<%= product.Name %>">
+                  <button class="menu_btn" type="submit">Add to Cart</button>
+                </form>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+    <% } else { %>
+      <p>Không tìm thấy sản phẩm nào.</p>
+    <% } %>
+  </div>
+</div>
+
+<%- include('footer') %>
+<style>
+  .searchform{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+  }
+  .container {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 1000px;
+    margin-left: 300px;
+  }
+  .menu_box{
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 15px;
+}
+
+.menu_box .menu_card{
+    width: 225px;
+    height: 380px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.menu_box .menu_card .menu_image{
+    width: 200px;
+    height: 145px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.menu_box .menu_card .menu_image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.3s;
+}
+
+.menu_box .menu_card .menu_image:hover img{
+    transform: scale(1.1);
+}
+
+.menu_box .menu_card .menu_info h2{
+    width: 60%;
+    text-align: center;
+    margin: 10px auto 10px auto;
+    font-size: 25px;
+    color: #fac031;
+}
+
+.menu_box .menu_card .menu_info p{
+    text-align: center;
+    margin-top: 8px;
+    line-height: 21px;
+}
+
+.menu_box .menu_card .menu_info h3{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.menu_box .menu_card .menu_info .menu_icon{
+    color: #fac031;
+    text-align: center;
+    margin: 10px 0 10px 0;
+}
+
+.menu_box .menu_card .menu_info .menu_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    background: #000;
+    padding: 8px 10px;
+    margin: 10px 40px;
+    transition: 0.3s;
+    width: 150px;
+}
+.search-results {
+  max-height: 500px; 
+  overflow-y: auto; 
+  text-align: center;
+  margin-top: 0; /* Đảm bảo không có margin ở trên */
+  padding-top: 0;
+  background-color: aliceblue;
+}
+
+</style>

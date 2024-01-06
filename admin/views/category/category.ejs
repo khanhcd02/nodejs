@@ -1,0 +1,80 @@
+<%- include('../layout',{title:'Loại sản phẩm'}) %>
+<div class="content">
+    <h1 class="contenth1">Danh sách loại sản phẩm</h1>
+    <a class="buttonA" href="/admin/category/add">Add</a>
+    <div class="search-container">
+        <form action="/admin/category/search" method="POST">
+            <input type="text" name="searchTerm" id="searchTerm" placeholder="Nhập từ khoá..." required>
+            <button type="submit">Tìm</button>
+        </form>
+      </div>
+    <ul class="ulc">
+        <% category.forEach((c) => { %>
+            <li class="lic"><%= c.Name %>
+            <div class="button-container">
+                <a class="buttonU" href="/admin/category/update/<%= c.Id %>">sửa</a>
+                <form class="form" method="POST" action="/admin/category/del/<%= c.Id %>">
+                    <button type="submit" name="button" class="buttonD">Xoá</button>
+                </form>
+            </div>
+            </li>
+        <% }); %>
+        <!-- Add pagination controls to your category.ejs -->
+        <% if(searchTerm=="") { %>
+            <div class="pagination">
+              <% for (let i = 1; i <= totalPages; i++) { %>
+              <a href="/admin/category?page=<%= i %>" <%= i === currentPage ? 'class="active"' : '' %>><%= i %></a>
+              <% } %>
+            </div>
+          <% }else { %>
+            <div class="pagination">
+              <% for (let i = 1; i <= totalPages; i++) { %>
+              <a href="/admin/category/search?page=<%= i %>" <%= i === currentPage ? 'class="active"' : '' %>><%= i %></a>
+              <% } %>
+            </div>
+          <% } %>
+  
+    </ul>
+</div>
+<style>
+    .ulc {
+      list-style-type: none;
+      padding: 0;
+      height: 50px;
+    }
+    .lic {
+        height: 40px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+    }
+    .search-container {
+    display: inline;
+    text-align: right;
+    margin: 50px auto;
+    }
+
+    .search-container input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+    }
+
+    .search-container button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .search-container button:hover {
+        background-color: #0056b3;
+    }
+</style>

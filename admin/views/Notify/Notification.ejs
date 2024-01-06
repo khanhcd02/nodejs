@@ -1,0 +1,78 @@
+<%- include('../layout',{title:'Thông báo'}) %>
+<div class="content">
+    <h1 class="contenth1">Thông báo</h1>
+    <div class="search-container">
+        <form action="/admin/notify/search" method="POST">
+            <input type="text" name="searchTerm" id="searchTerm" placeholder="Nhập từ khoá..." required>
+            <button type="submit">Tìm</button>
+        </form>
+      </div>
+    <ul class="ulc">
+        <% mess.forEach((m) => { %>
+            <a href="/admin/notify/<%= m.CustomerId %>">
+                <li class="lic">
+                    <img style="border-radius: 30%;" src="/users/<%= m.Img %>" alt="User Image" width="100">
+                    <span><%= m.Fullname %></span>
+                </li>
+            </a>
+        <% }); %>
+        <!-- Add pagination controls to your category.ejs -->
+        <% if(searchTerm=="") { %>
+            <div class="pagination">
+                <% for (let i = 1; i <= totalPages; i++) { %>
+                <a href="/admin/notify?page=<%= i %>" <%= i === currentPage ? 'class="active"' : '' %>><%= i %></a>
+                <% } %>
+            </div>
+        <% }else { %>
+            <div class="pagination">
+                <% for (let i = 1; i <= totalPages; i++) { %>
+                <a href="/admin/notify/search?page=<%= i %>" <%= i === currentPage ? 'class="active"' : '' %>><%= i %></a>
+                <% } %>
+            </div>
+        <% } %>
+    </ul>
+</div>
+<style>
+    .ulc {
+      list-style-type: none;
+      padding: 0;
+      height: 50px;
+    }
+    .lic {
+        height: 120px;
+        width: 400px;
+        margin-bottom: 10px;
+        border-radius: 30px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #d6d1d1;
+    }
+    .search-container {
+    display: inline;
+    text-align: right;
+    margin: 50px auto;
+    }
+
+    .search-container input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+    }
+
+    .search-container button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .search-container button:hover {
+        background-color: #0056b3;
+    }
+</style>

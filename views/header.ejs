@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Website</title>
+    <link rel="icon" type="image/x-icon" href="/epu.ico">
+    <link rel="stylesheet"  href="/style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    .user-menu .menu {
+    z-index: 1000;
+    display: none; 
+    position: absolute;
+    top: 45px;
+    left: 1400px;
+    width: 150px;
+    background-color: #fff; 
+    border: 1px solid #ccc;
+    padding: 10px; 
+    }
+    .user-menu:hover .menu {
+    display: block; 
+    }
+    .usermenu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex; 
+    }
+    .avatar{
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+    
+
+    a{
+        text-decoration: none;
+    }
+
+
+    .menu_btn {
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .menu_btn:hover {
+        background-color: #0056b3;
+    }
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        justify-content: center;
+    }
+
+    .pagination a {
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
+<body>
+
+    <section id="Home">
+        <nav>
+            <div class="logo">
+                <a href="/home"><img src="/logo.png"></a>
+            </div>
+
+            <ul>
+                <li><a href="/home#Home">Home</a></li>
+                <li><a href="/home#About">About</a></li>
+                <li><a href="/home#Menu">Menu</a></li>
+                <li><a href="/home#Gallary">Gallary</a></li>
+                <li><a href="/home#Review">Review</a></li>
+                <li><a href="/home#Team">Team</a></li>
+            </ul>
+
+            <div class="icon">
+                <a href="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <i class="fa-solid fa-heart"></i>
+                <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+            <div class="col-md-3">
+                <ul class="usermenu">
+                    <% if (loggedIn) { %>
+                        <div class="user-menu">
+                            <img class="avatar" src="/users/<%= user.Img %>" alt="User Image" width="40">
+                            <ul class="menu">
+                                <% if (isAdmin===1) { %>
+                                <li><a href="/admin">Trang admin</a></li><% } %>
+                                <li><a href="/personal">Profile</a></li>
+                                <li><a href="/logout">Log out</a></li>
+                                
+                            </ul>
+                        </div>                                            
+                      <% } else { %>
+                        <li><a href="/login" class="log">Login</a></li>|
+                        <li><a href="/signup" class="reg">Register</a></li>
+                      <% } %>
+                    
+                </ul>
+            </div>
+
+        </nav>
